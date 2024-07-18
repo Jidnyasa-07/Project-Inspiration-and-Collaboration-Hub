@@ -1,0 +1,210 @@
+*{
+    margin: 0;
+    padding:0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* //css variables are declared so then an be used againa and again */
+:root{
+    --color-primary: #443dc9;
+    --color-success: #00bf8e;
+    --color-warning: #f7934b;
+    --color-danger: #c64420;
+    --color-mycolor: hsl(272, 29%, 63%);
+    --color-danger-variant: rgba(247,88,66,0.4);
+    --color-white: #fff;
+    --color-light: rgba(255,255,255,0.7);
+    --color-black: #000;
+    --color-bg: #111a3b;
+    --color-bg2: #01020f;
+    --color-bg3: #050934;
+
+    --container-width-lg: 84%; 
+    --container-width-md: 90%;
+    --container-width-sm: 94%;
+
+    --transition: all 400ms ease;
+
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    display: grid;
+    border-bottom-left-radius: 20%;
+    color: var(--color-white);
+    background: var(--color-bg);
+    background-image: url(./image/undraw_visionary_technology_re_jfp7.svg);
+    background-repeat: no-repeat;
+    background-size:40%;
+    background-position-y:-5rem;
+    
+    background-position:2rem;
+    height: 4rem;
+    
+
+}
+
+nav{
+    background:var(--color-bg3);
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    top:0;
+    z-index: 11;
+    color: #00010e;
+
+}
+.a{
+    color: #020205;
+}
+
+/*change navbar styles on scroll using javascript*/
+.window-scroll{
+    background: var(--color-white);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+}
+.nav__container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #04050d;
+}
+.nav__container a{
+    font-size: 19px;
+    color: #e8e3e3;
+    transition: all 400ms ease; 
+
+}
+.nav__container a:hover{
+    color: var(--color-primary);
+}
+nav button{
+    display: none;
+
+}
+.nav__menu{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: #050934;
+}
+.nav__menu a{
+    font-size: 16px;
+    color: #e8e3e3;
+    transition: all 400ms ease; /*to make transition of whne we hover around the nav better*/
+}
+.nav__menu a:hover{
+    color: var(--color-primary);
+}
+.bottom a{
+    color: #a7c9e0;
+}
+.border{
+    
+    background-color: #191363;
+    margin-left: 50%;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    
+    margin-right: 20%;
+    border-radius: 2rem;
+    width: 40rem;
+    height: 30rem;
+    box-shadow:  1px 1px 4px 4px  #cacaca;
+    box-sizing: border-box;
+    transition: all 400ms ease;
+
+
+}
+.bottom{
+    background-color: #191363;
+    
+
+    
+}
+.msg{
+    padding:-9px;
+}
+
+.header h1{
+    
+    padding-bottom: -2rem;
+}
+.textbox{
+    height: 2.5rem;
+    width: 18rem;
+    font-size: 15px;
+    padding-left: 2rem;
+    border-radius: 0.6rem;
+    
+    
+}
+.btn{
+    height: 2.5rem;
+    width: 12rem;
+    border-radius: 0.6rem;
+    font-size: 15px;
+    box-shadow: 1px 1px 1px 1px  #8e8d8d;
+
+
+    background-color:#e8e3e3;
+    transition: all 400ms ease;
+    
+
+}
+.btn:hover{
+    background-color:#687ee0 ;
+}
+
+
+login-form, .signup-form {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+}
+
+.login-form h1, .signup-form h1 {
+    color: #cfaeae;
+    font-size: 50px;
+    margin-bottom: 20px;
+    
+}
+
+.login-form input, .signup-form input {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 40px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.login-form button, .signup-form button {
+    background-color: #100c0c;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 50px;
+    padding: 10px 20px;
+}
+
+.login-form button:hover, .signup-form button:hover {
+    background-color: #666;
+}
+
+.logout-link {
+    float: right;
+    margin-top: 10px;
+}
+

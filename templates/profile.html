@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static\profile.css">
+        <meta charset="UTF-8">
+        <title>User Profile</title>
+        <!--ICONSCOUT CDN -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='display.css') }}">
+        <!-- Boxicons CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+
+  body{
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.7;
+  color: var(--color-black);
+  background: var(--color-white);
+
+}
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0a0b42;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  .circular-img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+  .profile i {
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .profile ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+  
+  .profile li {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  .profile li strong {
+    font-weight: bold;
+  }
+  /*Dashboard*/
+  .sidebar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 50rem;
+    width: 78px;
+    background: var(--color-bg);
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
+}
+.sidebar.open{
+width: 250px;
+height: 50rem;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+.sidebar .logo-details{
+height: 60px;
+display: flex;
+align-items: center;
+position: relative;
+}
+.sidebar .logo-details .icon{
+opacity: 0;
+transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+color: #fff;
+font-size: 20px;
+font-weight: 600;
+opacity: 0;
+transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+opacity: 1;
+}
+.sidebar .logo-details #btn{
+position: absolute;
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+font-size: 22px;
+transition: all 0.4s ease;
+font-size: 23px;
+text-align: center;
+cursor: pointer;
+transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+text-align: right;
+}
+.sidebar i{
+color: #fff;
+height: 60px;
+min-width: 50px;
+font-size: 28px;
+text-align: center;
+line-height: 60px;
+}
+.sidebar .nav-list{
+margin-top: 20px;
+height: 100%;
+}
+.sidebar li{
+position: relative;
+margin: 8px 0;
+list-style: none;
+}
+.sidebar li .tooltip{
+position: absolute;
+top: -20px;
+left: calc(100% + 15px);
+z-index: 3;
+background: #fff;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+padding: 6px 12px;
+border-radius: 4px;
+font-size: 15px;
+font-weight: 400;
+opacity: 0;
+white-space: nowrap;
+pointer-events: none;
+transition: 0s;
+}
+
+.sidebar li:hover .tooltip{
+opacity: 1;
+pointer-events: auto;
+transition: all 0.4s ease;
+top: 50%;
+transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+display: none;
+}
+.sidebar input{
+font-size: 15px;
+color: #FFF;
+font-weight: 400;
+outline: none;
+height: 50px;
+width: 100%;
+width: 50px;
+border: none;
+border-radius: 12px;
+transition: all 0.5s ease;
+background: #1d1b31;
+}
+.sidebar.open input{
+position: fixed;
+padding: 0 20px 0 50px;
+width: 100%;
+}
+.sidebar .bx-search{
+position: absolute;
+top: 50%;
+left: 0;
+transform: translateY(-50%);
+font-size: 22px;
+background: #1d1b31;
+color: #FFF;
+}
+.sidebar.open .bx-search:hover{
+background: #1d1b31;
+color: #FFF;
+}
+.sidebar .bx-search:hover{
+background: #FFF;
+color: #11101d;
+}
+.sidebar li a{
+display: flex;
+height: 3rem;
+width: 100%;
+border-radius: 12px;
+align-items: center;
+text-decoration: none;
+transition: all 0.4s ease;
+background: #11101D;
+}
+.sidebar li a:hover{
+background: #FFF;
+}
+.sidebar li a .links_name{
+color: #fff;
+font-size: 15px;
+font-weight: 400;
+white-space: nowrap;
+opacity: 0;
+pointer-events: none;
+transition: 0.4s;
+}
+.sidebar.open li a .links_name{
+opacity: 1;
+pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+transition: all 0.5s ease;
+color: #11101D;
+}
+.sidebar li i{
+height: 50px;
+line-height: 50px;
+font-size: 18px;
+border-radius: 12px;
+}
+.sidebar li.profile{
+position: fixed;
+height: 60px;
+width: 78px;
+left: 0;
+bottom: 110rem;
+padding: 10px 14px;
+background: #1d1b31;
+transition: all 0.5s ease;
+overflow: hidden;
+}
+.sidebar.open li.profile{
+width: 250px;
+}
+.sidebar li .profile-details{
+display: flex;
+align-items: center;
+flex-wrap: nowrap;
+}
+.sidebar li img{
+height: 45px;
+width: 45px;
+object-fit: cover;
+border-radius: 6px;
+margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job{
+font-size: 15px;
+font-weight: 400;
+color: #fff;
+white-space: nowrap;
+}
+.sidebar li.profile .job{
+font-size: 12px;
+}
+.sidebar .profile #log_out{
+position: absolute;
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+background: #1d1b31;
+width: 100%;
+height: 60px;
+line-height: 60px;
+border-radius: 0px;
+transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+width: 50px;
+background: none;
+}
+
+.sidebar.open ~ .home-section{
+left: 250px;
+width: calc(100% - 250px);
+}
+.home-section .text{
+display: inline-block;
+color: #11101d;
+font-size: 25px;
+font-weight: 500;
+margin: 18px
+}
+@media (max-width: 420px) {
+.sidebar li .tooltip{
+    display: none;
+}
+}
+.nav__menu i{
+    font-size: 40px;
+}
+
+.paper h1{
+    font-size: 45px;
+    padding-left: 43rem;
+    padding-top: 7rem;
+    color: #000;
+}
+.paper p{
+    color: #000;
+    padding-left: 10rem;
+    padding-right: 8rem;
+    font-size:20px;
+    font-weight: 600;
+}
+.search-form{
+    padding-left: 36rem;
+    font-size: 16px;
+    size: 5rem;
+    height: 4rem;
+    
+    
+}
+.search-input{
+    font-size: 25px;
+    size: 5rem;
+    padding-left: 2rem;
+    height: 6rem;
+    color: #fff;
+
+}
+.search-submit{
+    background-color:#070c56;
+    color: #ffffff;
+    font-size: 23px;
+    height: 4rem;
+    width:6rem;
+    border-radius: 20px;
+}
+input.search-input{
+    background-color: #c3c1c1;
+    height: 4rem;
+    color: #fff;
+    border-radius: 17px;
+    width: 50%;
+}
+.search__icon i{
+    font-size: 40px;
+    color: #000;
+
+}
+.content{
+    padding-left: 12rem;
+    padding-top: 2rem;
+
+}
+.content li{
+    font-size: 24px;
+    color: #000;
+
+
+}
+.each-line a{
+    background-color: rgb(225, 219, 219);
+    width: 3rem;
+    height: 4rem;
+}
+.content ul{
+    display:grid;
+    grid-template-columns: repeat(3,22rem);
+    gap: 2rem;
+    height: 70rem;
+    align-items: center;
+    position:absolute;
+    justify-content: center;
+    align-items: center;
+    
+}
+.content:hover ul{
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+    transition:all 400ms ease;
+
+}
+#options {
+    background-color: #dde6ef;
+    width: 20rem;
+    height: 3rem;
+    font-size: 18px;
+}
+.value{
+    background-color: #dde6ef;
+    width: 20rem;
+    height: 3rem;
+
+}
+#web-btn{
+    background-color: #9c9c9c;
+    width: 5rem;
+    height: 3rem;
+    border-radius: 10px;
+    
+
+}
+.content .webeach-line{
+    background-color: #fbfbfb;
+    height: 34rem;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+    transition:all 400ms ease;
+    border-radius: 10px;
+    color: #000;
+    
+
+}
+.content .webeach-line .li .a{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+}
+.webeach-line:hover{
+    box-shadow: 0 35px 80px rgba(0.40,0.40,0.40,0.40);
+    border: #0b0b0b;
+    transition:all 100ms ease;
+    
+    
+
+}
+img.resize3{
+    width: 22rem;
+    border-radius: 16px;
+    height: 20rem;
+}
+p.webeach-line{
+    color: #000;
+    font-size: 20px;
+}
+.a{
+    color: #000;
+}
+                                            /*Form*/
+  form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+}
+.description{
+  color: #0e0940;
+}
+.contact{
+  color: #0e0940;
+}
+.recentproject{
+  color: #0e0940;
+}
+label {
+  margin-top: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(0 0 0 / 17%);
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1b1560;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0d044bfd;
+}
+
+  
+        </style>
+    </head>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body>
+        <main>
+        <h1>Prof</h1>
+        <div class="profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Your Image" class="circular-img">
+            {% if profile %}
+            
+            <ul>
+                {% for info in profile %}
+                <li><strong>Name:</strong> {{info.name}}</li>
+                <li><strong>Email:</strong> {{info.username}}</li>
+                
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="sidebar">
+          <div class="logo-details">
+            
+              <div class="logo_name">InnoVate</div>
+              <i class='bx bx-menu' id="btn" ></i>
+          </div>
+          <ul class="nav-list">
+            
+            <li>
+              <a href={{url_for("home")}}>
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+               <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+             <a href={{url_for("profile")}}>
+               <i class='bx bx-user' ></i>
+               <span class="links_name">Profile</span>
+             </a>
+             <span class="tooltip">Profile</span>
+           </li>
+           <li>
+             <a href=aboutus.html>
+               <i class='bx bx-chat' ></i>
+               <span class="links_name">About us</span>
+             </a>
+             <span class="tooltip">About us</span>
+           </li>
+           <li>
+             <a href={{url_for("research")}}>
+               <i class="uil uil-search-alt"></i>
+               <span class="links_name">Research papers</span>
+             </a>
+             <span class="tooltip">Research papers</span>
+           </li>
+           <li>
+             <a href={{url_for("project")}}>
+               <i class='bx bx-folder' ></i>
+               <span class="links_name">Project Catalog</span>
+             </a>
+             <span class="tooltip">Project Catalog</span>
+           </li>
+           <li>
+             <a href={{url_for("hack")}}>
+                <i class="uil uil-desktop"></i>
+               <span class="links_name">Hackathons</span>
+             </a>
+             <span class="tooltip">Hackathons</span>
+           </li>
+           <li>
+             <a href={{url_for("udemy")}}>
+                <i class="uil uil-book-open"></i>
+               <span class="links_name">Courses</span>
+             </a>
+             <span class="tooltip">Courses</span>
+           </li>
+           <li>
+             <a href={{url_for("blogs_post")}}>
+                <i class="uil uil-files-landscapes-alt"></i>
+               <span class="links_name">Blogs</span>
+             </a>
+             <span class="tooltip">Blogs</span>
+           </li>
+           <li>
+            <a href={{url_for("cards")}}>
+                <i class="uil uil-users-alt"></i>
+              <span class="links_name">Faculty</span>
+            </a>
+            <span class="tooltip">Faculty</span>
+          </li>
+          <li>
+            <a href={{url_for("upload")}}>
+                <i class="uil uil-upload"></i>
+              <span class="links_name">Upload</span>
+            </a>
+            <span class="tooltip">Upload</span>
+          </li>
+          <li class="profile">
+            <div class="profile-details">
+              <!--<img src="profile.jpg" alt="profileImg">-->
+              <div class="name_job">
+                <a href="{{ url_for('logout') }}">Logout</a>
+              </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out" ></i>
+        </li>
+          </ul>
+        </div>
+        <section class="home-section">
+          <div class="text"></div>
+      </section>
+      <script>
+      let sidebar = document.querySelector(".sidebar");
+      let closeBtn = document.querySelector("#btn");
+      let searchBtn = document.querySelector(".bx-search");
+    
+      closeBtn.addEventListener("click", ()=>{
+        sidebar.classList.toggle("open");
+        menuBtnChange();//calling the function(optional)
+      });
+      searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+          sidebar.classList.toggle("open");
+          menuBtnChange(); //calling the function(optional)
+      });
+      // following are the code to change sidebar button(optional)
+      function menuBtnChange() {
+          if(sidebar.classList.contains("open")){
+          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+          }else {
+          closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+          }
+      }
+  </script>   
+        <form>
+            <label class="contact">Contact</label>
+            <input type="text" id="name" name="name">
+            <label class="recentproject">Recent Project</label>
+            <input type="text" id="project" name="project">
+            <label class="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+          
+        </main>
+    </body>
+</html>

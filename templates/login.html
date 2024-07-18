@@ -1,0 +1,58 @@
+<html>
+    <head>
+      
+        <meta charset="UTF-8">
+        <title> Login </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">          
+        
+    </head>
+<nav>
+
+  <div class="container nav__container">
+  <a href="/index.html"><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InnoVate</h4></a>
+      <ul class="nav__menu">
+      </br>
+          <li><a href="login.html">Login/Signup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <!-- <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact us</a></li> -->
+
+          <!-- <li><a href="templates/papers.html">Research Papers</a></li> -->
+
+
+      </ul>
+      <button id="open_menu_btn"><i class="uil uil-bars"></i></button>
+      <button id="open_menu_btn"><i class="uil uil-multiply"></i></i></button>
+      
+
+
+  </div>
+</nav>
+    <body>
+    </br></br></br></br>
+        <div align="center">
+        </br>
+          <div class="border">
+              <div align="center" class="header">
+                
+                <h1 class="word">Login</h1>
+              </div></br></br>
+            <h2 class="word">
+                <form action="{{ url_for('login') }}" method="post">
+                  <div class="msg">{{ msg }}</div>
+                  
+                    <input id="username" name="username" type="text"  placeholder="Enter Your Email" class="textbox"/></br></br>
+                    <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br>
+                    <input type="submit" class="btn" value="Sign In"></br></br>
+                </form>
+            </h2>
+            <p class="bottom">Don't have an account?  <a class="bottom" href="{{url_for('register')}}"> Sign Up here</a></p>
+            <a class="forgot" href="{{url_for('forgot_password')}}">Forgot Password?</a>
+          </div>
+        </div>
+        
+
+
+    </body>
+</html>

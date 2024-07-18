@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <!--ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='display.css') }}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-image: url(./photos/881563d6444b370fa4ceea0c3183bb4c.gif);
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <div class="systems">
+            <h1>Project Catalog</h1></div>
+        <body>
+            <div class="sidebar">
+              <div class="logo-details">
+                
+                  <div class="logo_name">InnoVate</div>
+                  <i class='bx bx-menu' id="btn" ></i>
+              </div>
+              <ul class="nav-list">
+                
+                <li>
+                  <a href={{url_for("home")}}>
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                  </a>
+                   <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                 <a href={{url_for("profile")}}>
+                   <i class='bx bx-user' ></i>
+                   <span class="links_name">Profile</span>
+                 </a>
+                 <span class="tooltip">Profile</span>
+               </li>
+               <li>
+                 <a href=aboutus.html>
+                   <i class='bx bx-chat' ></i>
+                   <span class="links_name">About us</span>
+                 </a>
+                 <span class="tooltip">About us</span>
+               </li>
+               <li>
+                 <a href={{url_for("research")}}>
+                   <i class="uil uil-search-alt"></i>
+                   <span class="links_name">Research papers</span>
+                 </a>
+                 <span class="tooltip">Research papers</span>
+               </li>
+               <li>
+                 <a href={{url_for("project")}}>
+                   <i class='bx bx-folder' ></i>
+                   <span class="links_name">Project Catalog</span>
+                 </a>
+                 <span class="tooltip">Project Catalog</span>
+               </li>
+               <li>
+                 <a href={{url_for("hack")}}>
+                    <i class="uil uil-desktop"></i>
+                   <span class="links_name">Hackathons</span>
+                 </a>
+                 <span class="tooltip">Hackathons</span>
+               </li>
+               <li>
+                 <a href={{url_for("udemy")}}>
+                    <i class="uil uil-book-open"></i>
+                   <span class="links_name">Courses</span>
+                 </a>
+                 <span class="tooltip">Courses</span>
+               </li>
+               <li>
+                 <a href={{url_for("blogs_post")}}>
+                    <i class="uil uil-files-landscapes-alt"></i>
+                   <span class="links_name">Blogs</span>
+                 </a>
+                 <span class="tooltip">Blogs</span>
+               </li>
+               <li>
+                <a href={{url_for("cards")}}>
+                    <i class="uil uil-users-alt"></i>
+                  <span class="links_name">Faculty</span>
+                </a>
+                <span class="tooltip">Faculty</span>
+              </li>
+              <li>
+                <a href={{url_for("upload")}}>
+                    <i class="uil uil-upload"></i>
+                  <span class="links_name">Upload</span>
+                </a>
+                <span class="tooltip">Upload</span>
+              </li>
+               <li class="profile">
+                   <div class="profile-details">
+                     <!--<img src="profile.jpg" alt="profileImg">-->
+                     <div class="name_job">
+                       <a href="{{ url_for('logout') }}">Logout</a>
+                     </div>
+                   </div>
+                   <i class='bx bx-log-out' id="log_out" ></i>
+               </li>
+              </ul>
+            </div>
+    
+            
+            <script>
+            let sidebar = document.querySelector(".sidebar");
+            let closeBtn = document.querySelector("#btn");
+            let searchBtn = document.querySelector(".bx-search");
+          
+            closeBtn.addEventListener("click", ()=>{
+              sidebar.classList.toggle("open");
+              menuBtnChange();//calling the function(optional)
+            });
+            searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+                sidebar.classList.toggle("open");
+                menuBtnChange(); //calling the function(optional)
+            });
+            // following are the code to change sidebar button(optional)
+            function menuBtnChange() {
+                if(sidebar.classList.contains("open")){
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+                }else {
+                closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+                }
+            }
+          </script>   
+    <nav>
+        
+        <div class="container nav__container">
+            <a href="index.html"><h4>InnoVate</h4></a>
+            <ul class="nav__menu">
+                {% if name %}
+                <ul>
+                    <li><a href={{url_for("profile")}}><i class="uil uil-user-circle "></i></a></li>
+                </ul>
+                {%else%}
+                <li><a href={{url_for("login")}}>Login/Signup</a></li>
+                {% endif %}
+                <!-- <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact us</a></li> -->
+    
+                <!-- <li><a href="templates/papers.html">Research Papers</a></li> -->
+    
+    
+            </ul>
+            <button id="open_menu_btn"><i class="uil uil-bars"></i></button>
+            <button id="open_menu_btn"><i class="uil uil-multiply"></i></i></button>
+            
+    
+    
+        </div>
+    </nav>
+
+<header>
+     <h1>Project Catalog</h1>
+    <br>
+    <p class="info" >A student project catalog is a digital repository that allows faculty and students to view past projects and filter them by domain, guide, or keyword. This promotes collaboration and knowledge
+         sharing, enabling users to find relevant projects easily and use them as a reference for future projects.</p>
+    
+</header>       
+        <div class="search_container">
+            <form class="search" method="post" action="/projects.html">
+            <select name="dropdown" id="dropdown">
+                <option class="dropdown-item" value="Domain">Domain</option>
+                <option class="dropdown-item" value="Guide">Guide</option>
+            </select><br>
+            <input type="text" name="search" placeholder="   Search ..." id="search-bar">
+            <button class="search-submit" type="submit"><i class="uil uil-search"></i></button>
+            <label class="dropdown" for="dropdown"></label>
+        </div> 
+        </form>
+    </div>
+    </div>
+    <div class="container systems__container">
+            {% if results %}
+            {% for result in  results%}
+            <article class="system">
+                <div class="system__system__img">
+                    <img src={{result.Photos[0]}}>
+                    <div class="system__info" >
+                    <br>
+                    <h3 class="title" >{{result.Title}}</h3>
+                    </br>
+                    <p><h5 class="guide" > Guide:  {{result.Guide}}</h5></p>
+                    
+                    <p> By: {{result.Name}}</p>
+                    
+                    <p><h5 class="domain">Domain:  {{result.Domain}}</h5></p>
+                    
+                    <button class="btn_main" onclick="openPopup('{{ result._id }}')">See More</button>
+                    <div class="popup" id="popup-{{ result._id }}">
+                      <div class="overlay" id="overlay-{{ result._id }}"></div>
+                      <div class="popup-content">
+                        {% for key in  result.Photos%}
+                        <img class="resize2" src={{key}}></img>
+                        {% endfor %}
+                        
+                        <h3>{{result.Title}}</h3>
+                        <br>
+                        <p>Group members: {{result.Members}}</p> 
+                        <p>Year: {{result.Year}}</p>
+                       
+                        <p>Description: {{result.Description}}</p>
+                        
+                        <h4 class="domain" >{{result.Domain}}</h4>
+                        
+                        <br>
+                        <p>   Guide : {{result.Guide}}</p>
+                        <div class="actionBtn">
+                          <a href="mailto:{{result.Email}}">Contact</a>
+                      </div>
+                        <button class="close-btn" onclick="closePopup('{{result._id}}')"><i class="uil uil-multiply"></i></button>
+                   
+                        </div>    
+                  </div>
+                    
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+            {% else %}
+            <article class="system">
+                <div class="system__system__img">
+                    <img class="resize2" src="static/image/digipen-computer-engineering-2nd-year-mapper-rover-im.jpg">
+                    <div class="system__info">
+                    <h4>An autonomous rover that performs path-finding tasks</h4>
+                    <p>
+                    Second Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni
+                    </p>
+                    <button type="submit" class="btn btnn" onclick="openPopup('3')">Learn More</button>
+                    <div class="popup" id="popup-3">
+                        <img class="resize2" src="static/image/p1.jpg" >
+                        <i class="uil uil-step-forward"></i>
+                        <h2>An autonomous rover that performs path-finding tasks</h2>
+                        <p>An Autonomous Rover is a robotic vehicle designed to navigate and perform tasks independently. This type of rover is equipped with sensors, 
+                            cameras, and artificial intelligence algorithms to enable it to find its way and complete assigned tasks.</p>
+                            <span class="icon" ><i class="uil uil-robot">Robotics</i></span>
+                            <span class="icon" ><i class="uil uil-desktop-alt"> Computer Vision</i></span>
+                            <br><br>
+                            <span class="icon" ><i class="uil uil-desktop-alt"> Machine Learning</i></span>
+                            
+                            <p>Second Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni <br> Contact Details: rajvarma@21vit.edu</p>
+                            <button type="button" class="btn btnn" onclick="closePopup()">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </article>
+            <article class="system">
+                <div class="system__system__img">
+                    <img class="resize2" src="static/image/FGIN44DJ2GF8QBJ.jpg">
+                    <div class="system__info">
+                    <h4>SecureShield - A Home Security System based on Password  </h4>
+                    <br>
+                    <p>
+                    Second Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni
+                    </p>
+                    <button type="submit" class="btn btnn" onclick="openPopup('2')">Learn More</button>
+                    <div class="popup" id="popup-2">
+                        <img class="resize2" src="static/image/p1.jpg" >
+                        <i class="uil uil-step-forward"></i>
+                        <h2>SecureShield - A Home Security System based on Password </h2>
+                        <p>This website allows people to easily find local blood donation centers and schedule appointments, as well as educate the public on the importance of blood donation and the donation process. The website provides a convenient and efficient way for donors to give the gift of life and help save lives in their community.</p>
+                        <span class="project__icon"><i class="uil uil-desktop-alt"></i></span>
+                            <br></br> Third year Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni
+                            <p>Contact Details: rajvarma@21vit.edu</p>
+                            <button type="button" onclick="closePopup()">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </article>
+            <article class="system">
+                <div class="system__system__img">
+                    <img class="resize2" src="static/image/Untitled design (15).png">
+                    <div class="system__info">
+                    <h4>BloodShare - A Blood Donation Website</h4>
+                    <br>
+                    <p>
+                        First Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni
+                    </p>
+                    <button type="submit" class="btn btnn" onclick="openPopup('1')">Learn More</button>
+                    <div class="popup" id="popup-1">
+                        <img class="resize2" src="static/image/p1.jpg" >
+                        <i class="uil uil-step-forward"></i>
+                        <h2>SecureShield - A Home Security System based on Password </h2>
+                        <p>This website allows people to easily find local blood donation centers and schedule appointments, as well as educate the public on the importance of blood donation and the donation process. The website provides a convenient and efficient way for donors to give the gift of life and help save lives in their community.</p>
+                        <span class="project__icon"><i class="uil uil-desktop-alt"></i></span>
+                            <br></br> First Year - Raj Varma , Tiya Sharma , Rohit Patel , Manav Soni
+                            <p>Contact Details: rajvarma@21vit.edu</p>
+                            <button type="button" onclick="closePopup()">Close</button>
+                    </div>
+                    </div>
+                
+            </article> 
+            {% endif %}
+          
+        </div>
+    
+</div>
+</body>
+<script>
+    let select=document.getElementById("select");
+    let list=document.getElementById("list");
+    let selectText=document.getElementById("selectText");
+    let inputField=document.getElementById("inputField");
+    let options=document.getElementsByClassName("options");
+    
+    select.onclick =function(){
+        list.classList.toggle("show");
+    }
+    for(option of options){
+        option.onclick=function(){
+            selectText.innerHTML=this.innerHTML;
+            inputField.placeholder="Search by "+ selectText.innerHTML;
+        }
+    }
+    function openPopup(id) {
+      var popup = document.getElementById('popup-' + id);
+      var overlay = document.getElementById('overlay-' + id);
+      if (popup && overlay) {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+        
+      }
+    }
+    
+    function closePopup(id) {
+      var popup = document.getElementById('popup-' + id);
+      var overlay = document.getElementById('overlay-' + id);
+      if (popup && overlay) {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+        
+      }
+    }
+  
+ 
+</script>
+</html>

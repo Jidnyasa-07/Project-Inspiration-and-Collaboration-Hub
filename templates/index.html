@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Project Catalog</title>
+
+    <!--ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<!-- //***************SIDE BAR*****************// -->
+<body>
+    <body>
+        <div class="sidebar">
+          <div class="logo-details">
+            
+              <div class="logo_name">InnoVate</div>
+              <i class='bx bx-menu' id="btn" ></i>
+          </div>
+          <ul class="nav-list">
+            
+            <li>
+              <a href={{url_for("home")}}>
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+               <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+             <a href={{url_for("profile")}}>
+               <i class='bx bx-user' ></i>
+               <span class="links_name">Profile</span>
+             </a>
+             <span class="tooltip">Profile</span>
+           </li>
+           <li>
+             <a href=aboutus.html>
+               <i class='bx bx-chat' ></i>
+               <span class="links_name">About us</span>
+             </a>
+             <span class="tooltip">About us</span>
+           </li>
+           <li>
+             <a href={{url_for("research")}}>
+               <i class="uil uil-search-alt"></i>
+               <span class="links_name">Research papers</span>
+             </a>
+             <span class="tooltip">Research papers</span>
+           </li>
+           <li>
+             <a href={{url_for("project")}}>
+               <i class='bx bx-folder' ></i>
+               <span class="links_name">Project Catalog</span>
+             </a>
+             <span class="tooltip">Project Catalog</span>
+           </li>
+           <li>
+             <a href={{url_for("hack")}}>
+                <i class="uil uil-desktop"></i>
+               <span class="links_name">Hackathons</span>
+             </a>
+             <span class="tooltip">Hackathons</span>
+           </li>
+           <li>
+             <a href={{url_for("udemy")}}>
+                <i class="uil uil-book-open"></i>
+               <span class="links_name">Courses</span>
+             </a>
+             <span class="tooltip">Courses</span>
+           </li>
+           <li>
+             <a href={{url_for("blogs_post")}}>
+                <i class="uil uil-files-landscapes-alt"></i>
+               <span class="links_name">Blogs</span>
+             </a>
+             <span class="tooltip">Blogs</span>
+           </li>
+           <li>
+            <a href={{url_for("cards")}}>
+                <i class="uil uil-users-alt"></i>
+              <span class="links_name">Faculty</span>
+            </a>
+            <span class="tooltip">Faculty</span>
+          </li>
+          <li>
+            <a href={{url_for("upload")}}>
+                <i class="uil uil-upload"></i>
+              <span class="links_name">Upload</span>
+            </a>
+            <span class="tooltip">Upload</span>
+          </li>
+           <li class="profile">
+               <div class="profile-details">
+                 <!--<img src="profile.jpg" alt="profileImg">-->
+                 <div class="name_job">
+                   <a href="{{ url_for('logout') }}">Logout</a>
+                 </div>
+               </div>
+               <i class='bx bx-log-out' id="log_out" ></i>
+           </li>
+           
+          </ul>
+        </div>
+
+        <section class="home-section">
+            <div class="text"></div>
+        </section>
+        <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+      
+        closeBtn.addEventListener("click", ()=>{
+          sidebar.classList.toggle("open");
+          menuBtnChange();//calling the function(optional)
+        });
+        searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+            sidebar.classList.toggle("open");
+            menuBtnChange(); //calling the function(optional)
+        });
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+            if(sidebar.classList.contains("open")){
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+            }else {
+            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+            }
+        }
+    </script>   
+<nav>
+    
+    <div class="container nav__container">
+        <a href="index.html"><h4>InnoVate</h4></a>
+        <ul class="nav__menu">
+            {% if name %}
+            <ul>
+                <li><a href={{url_for("profile")}}><i class="uil uil-user-circle "></i></a></li>
+            </ul>
+            {%else%}
+            <li><a href={{url_for("login")}}>Login/Signup</a></li>
+            {% endif %}
+            <!-- <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact us</a></li> -->
+
+            <!-- <li><a href="templates/papers.html">Research Papers</a></li> -->
+
+
+        </ul>
+        <button id="open_menu_btn"><i class="uil uil-bars"></i></button>
+        <button id="open_menu_btn"><i class="uil uil-multiply"></i></i></button>
+        
+
+
+    </div>
+</nav>
+<!-- =================end of nav bar=============== -->
+<header>
+
+    <div class="container header_container">
+        
+        <div class="header_left">
+            <h1>Unleash Your Potential 
+                with Our Vibrant Project Community</h1>
+            <p>Discover innovative and inspiring projects created by a diverse community of makers, builders, and creators. Browse through a wide range of categories, from technology and design to art and education, to find your next big project idea. Get inspired, share your own work, and join the community today.
+            </p>
+            <a href="projects.html"class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="header_right">
+            <div class="header_right-image">
+                <img class="resize"src="static/image/developer-team.png">
+            </div>
+        </div>
+
+
+    </div>
+</header>
+
+<!-- =================END OF HEADER=============== -->
+
+
+
+
+
+<section class="projects">
+    <div class="container project__container">
+        <div class="project__left">
+            <h1>Domains</h1>
+            <p>Technology is a rapidly evolving field that offers a diverse range of domains for individuals to specialize in and pursue careers. These domains encompass a wide range of areas including software development, data analysis, cybersecurity, artificial intelligence, and much more. Whether you are a beginner looking to build your first project or a seasoned professional seeking to expand your skills, a strong understanding of these tech domains is essential.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+        <div class="project__right">
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-desktop-alt"></i></span>
+                <h5>Web Development</h5>
+                <p>Featuring projects related to building and designing web applications.</p>
+            </article>
+
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-mobile-android"></i></span>
+                <h5>App Development</h5>
+                <p>Showcasing projects centered around creating mobile apps for iOS and Android platforms.</p>
+            </article>
+
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-analytics"></i></i></i></span>
+                <h5>Artificial Intelligence & Machine Learning</h5>
+                <p>A collection of projects that leverage machine learning, deep learning and natural language processing to solve real-world problems.</p>
+            </article>
+
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-bitcoin-circle"></i></span>
+                <h5>Blockchain</h5>
+                <p>Blockchain is a rapidly growing domain in technology that deals with secure and transparent digital transactions</p>
+            </article>
+
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-robot"></i></span>
+                <h5>Internet of Things (IoT)</h5>
+                <p>Projects that utilize connected devices and sensors to create smart home solutions and wearable technologies.</p>
+            </article>
+
+            <article class="project">
+                <span class="project__icon"><i class="uil uil-cloud-lock"></i></span>
+                <h5>Cyber Security</h5>
+                <p> A range of projects that focus on securing networks, devices, and data by using encryption and firewalls.</p>
+            </article>
+            
+
+        </div>
+    </div>
+
+
+</section>
+<!-- =================END OF PROJECTS=============== -->
+
+
+
+
+
+
+
+
+<section class="systems">
+    <h2>Project Catalog</h2>
+    <div class="container systems__container">
+        <article class="system">
+            <div class="system__system__img">
+                <img class="resize2" src="static/image/digipen-computer-engineering-2nd-year-mapper-rover-im.jpg">
+                <div class="system__info">
+                <h4>An autonomous rover that performs path-finding tasks</h4>
+                <p>
+                    An Autonomous Rover is a robotic vehicle designed to navigate and perform tasks independently. This type of rover is equipped with sensors, cameras, and artificial intelligence algorithms to enable it to find its way and complete assigned tasks.
+
+                </p>
+                <a href="projects.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="system">
+            <div class="system__system__img">
+                <img class="resize2" src="static/image/Untitled design (15).png">
+                <div class="system__info">
+                <h4>BloodShare - A Blood Donation Website</h4>
+                <p>
+                    This website allows people to easily find local blood donation centers and schedule appointments, as well as educate the public on the importance of blood donation and the donation process. The website provides a convenient and efficient way for donors to give the gift of life and help save lives in their community.
+
+                </p>
+                <a href="projects.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="system">
+            <div class="system__system__img">
+                <img class="resize2" src="static/image/FGIN44DJ2GF8QBJ.jpg">
+                <div class="system__info">
+                <h4>SecureShield - A Home Security System based on Password  </h4>
+                <p>
+                    A Home Security System based on Password is a security solution that uses a password to control access to a home or building. It allows the homeowner or authorized users to enter the premises by entering a unique password, while denying access to unauthorized individuals. 
+
+                </p>
+                <a href="projects.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </article>
+        
+
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__1">
+            <a href="index.html" class="footer__logo">InnoVate<h4></h4></a>
+            <p>
+                hello
+            </p>
+        </div>
+        <div class="footer__2">
+            <h4>links</h4>
+            <ul class="permallinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer__3">
+            <h4>Privacy</h4>
+            <ul class="privacy">
+                <li><a href= "#">Privacy Policy</a></li>
+                <li><a href="#">Terms and Condition</a></li>
+                <li><a href="#">Refund Policy</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer__4">
+            <h4>Contact us</h4>
+            <div>
+                <p>+91 951 267 6578</p>
+                <p>abc212gmail.com</p>
+            </div>
+        </div>
+        <div>
+            <ul class="footer_socials">
+                <li>
+                    <a href="#"><i class="uil uil-facebook-messenger-alt"></i></a>
+                </li>
+                <li><a href="#"><i class="uil uil-instagram"></i></a></li>
+                <li><a href="#"><i class="uil uil-twitter-alt"></i></a></li>
+                <li><a href="#"><i class="uil uil-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer__copyright">
+            <small>Copyright &copy; InnoVate</small>
+        </div>
+
+    </div>
+</footer>
+
+<script src="templates/main.js"></script>
+
+    
+</body>
+</html>
