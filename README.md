@@ -1,4 +1,5 @@
-# Student-Collaboration-Hub
+# Project-Inspiration-and-Collaboration-Hub
+
 
 
 
